@@ -16,15 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.makantayebi.cms.model.Config;
 import com.makantayebi.cms.service.ConfigService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/config")
+@Tag(name = "Configuration API", description = "Provides the CRUD operations for the Configuration.")
+
 public class ConfigController {
     @Autowired
     private ConfigService configService;
 
+    @Operation(summary = "Gets a list", description = "All the current configurations for the current user")
     @GetMapping
     public List<Config> getAllConfigs() {
-        // TODO: change to get for the current user.
+        // TODO: Change to get for the current user.
         List<Config> configs = configService.findAll();
         Config sample = new Config();
         sample.setId(1L);
@@ -35,19 +41,22 @@ public class ConfigController {
         return configs;
     }
 
+    @Operation(summary = "create", description = "Create a new configuration.")
     @PostMapping
     public ResponseEntity<Config> createConfig(@RequestBody Config config) {
-        // TODO: add the user id?
+        // TODO: add the user id
         configService.save(config);
         return ResponseEntity.status(201).body(config);
     }
 
+    @Operation(summary = "Delete", description = "Remove one of the configurations for the user")
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable(value = "id") Long configId) {
         configService.delete(configId);
         return ResponseEntity.ok().build();
     }
 
+    @Operation(summary = "Update", description = "Update the key, value, or the description of the configuration")
     @PutMapping("/{id}")
     public ResponseEntity<Config> update(@PathVariable(value = "id") Long configId,
             @RequestBody Config config) {

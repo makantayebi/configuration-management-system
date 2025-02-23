@@ -8,7 +8,7 @@ The `./frontend` folder contains the code for the frontend.
 
 ## TODOs
 
-- [ ] Swagger
+- [x] Documentation using swagger. It's reachable via domain-name:port/swagger-ui/index.html
 - [ ] UserController
 - [ ] Authentication and authorization with JWT
 - [WIP] test the ConfigController
