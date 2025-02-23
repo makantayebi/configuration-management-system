@@ -30,4 +30,5 @@ public class ConfigService {
     public void delete(Long id) {
         configRepository.deleteById(id);
     }
+
 }
