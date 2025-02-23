@@ -1,0 +1,47 @@
+Adding a configuration:
+<mat-form-field>
+  <mat-label>Key</mat-label>
+  <input matInput placeholder="Key" [(ngModel)]="newConfig.key" name="key">
+</mat-form-field>
+<mat-form-field>
+  <mat-label>Value</mat-label>
+  <input matInput placeholder="Value" [(ngModel)]="newConfig.value" name="value">
+</mat-form-field>
+<button mat-button (click)="createConfig()">Create</button> 
+
+<p>Configurations are greate! Here is a list:</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- key Column -->
+  <ng-container matColumnDef="key">
+    <th mat-header-cell *matHeaderCellDef> Key </th>
+    <td mat-cell *matCellDef="let element"> {{element.key}} </td>
+  </ng-container>
+
+  <!-- value Column -->
+  <ng-container matColumnDef="value">
+    <th mat-header-cell *matHeaderCellDef> value </th>
+    <td mat-cell *matCellDef="let element"> 
+      <input matInput placeholder="Value" [(ngModel)]="element.value" name="value" (blur)="updateConfigVal(element)">
+  </td>
+  </ng-container>
+
+  <!-- Actions: -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="deleteConfig(element.id)">
+        <mat-label>delete</mat-label>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

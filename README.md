@@ -8,6 +8,16 @@ The `./frontend` folder contains the code for the frontend.
 
 ## TODOs
 
+- [ ] Add `description` to the configuration.
+- [ ] Frontend
+  - [ ] A Table with angular material
+    - [ ] add
+    - [ ] delete
+    - [ ] update
+  - [ ] register
+  - [ ] login
+  - [ ] logout
+  - [ ] A navbar that is visible in all pages.
 - [x] Documentation using swagger. It's reachable via domain-name:port/swagger-ui/index.html
 - [ ] UserController
 - [ ] Authentication and authorization with JWT
