@@ -8,6 +8,14 @@ The `./frontend` folder contains the code for the frontend.
 
 ## TODOs
 
+- [ ] Swagger
+- [ ] UserController
+- [ ] Authentication and authorization with JWT
+- [WIP] test the ConfigController
+  - [x] Create
+  - [ ] Update
+  - [ ] Read
+  - [ ] Delete
 - [x] create database
 - [x] user table via jpa
 - [x] create configuration table

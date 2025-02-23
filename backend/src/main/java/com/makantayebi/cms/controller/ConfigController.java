@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.makantayebi.cms.model.Config;
-import com.makantayebi.cms.model.User;
 import com.makantayebi.cms.service.ConfigService;
 
+@RestController
+@RequestMapping("/api/config")
 public class ConfigController {
     @Autowired
     private ConfigService configService;
@@ -33,9 +36,10 @@ public class ConfigController {
     }
 
     @PostMapping
-    public Config createConfig(@RequestBody Config config) {
-        // TODO: user id?
-        return configService.save(config);
+    public ResponseEntity<Config> createConfig(@RequestBody Config config) {
+        // TODO: add the user id?
+        configService.save(config);
+        return ResponseEntity.status(201).body(config);
     }
 
     @DeleteMapping("/{id}")
